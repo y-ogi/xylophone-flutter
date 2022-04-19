@@ -4,6 +4,11 @@ import 'package:audioplayers/audioplayers.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+  void playSound(int soundNumber) {
+    final player = AudioCache();
+    player.play('note$soundNumber.wav');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,8 +18,7 @@ class XylophoneApp extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note1.wav');
+                  playSound(1);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red),
@@ -23,8 +27,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note2.wav');
+                  playSound(2);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.orange),
@@ -33,8 +36,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note3.wav');
+                  playSound(3);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.yellow),
@@ -43,8 +45,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note4.wav');
+                  playSound(4);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
@@ -53,8 +54,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note5.wav');
+                  playSound(5);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.teal),
@@ -63,8 +63,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note6.wav');
+                  playSound(6);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.lightBlue),
@@ -73,8 +72,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  final player = AudioCache();
-                  player.play('note7.wav');
+                  playSound(7);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.purple),
