@@ -9,6 +9,45 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNumber.wav');
   }
 
+  Widget buildKey({int keyNumber}) {
+    Color color;
+    switch (keyNumber) {
+      case 1:
+        color = Colors.red;
+        break;
+      case 2:
+        color = Colors.orange;
+        break;
+      case 3:
+        color = Colors.yellow;
+        break;
+      case 4:
+        color = Colors.green;
+        break;
+      case 5:
+        color = Colors.teal;
+        break;
+      case 6:
+        color = Colors.lightBlue;
+        break;
+      case 7:
+        color = Colors.purple;
+        break;
+      default:
+    }
+    return Expanded(
+      child: TextButton(
+        onPressed: () {
+          playSound(soundNumber: keyNumber);
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(color),
+        ),
+        child: Container(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,84 +57,13 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 1);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 2);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.orange),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 3);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 4);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 5);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.teal),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 6);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.lightBlue),
-                  ),
-                  child: Container(),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    playSound(soundNumber: 7);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.purple),
-                  ),
-                  child: Container(),
-                ),
-              ),
+              buildKey(keyNumber: 1),
+              buildKey(keyNumber: 2),
+              buildKey(keyNumber: 3),
+              buildKey(keyNumber: 4),
+              buildKey(keyNumber: 5),
+              buildKey(keyNumber: 6),
+              buildKey(keyNumber: 7),
             ],
           ),
         ),
