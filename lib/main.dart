@@ -9,32 +9,7 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNumber.wav');
   }
 
-  Widget buildKey({int keyNumber}) {
-    Color color;
-    switch (keyNumber) {
-      case 1:
-        color = Colors.red;
-        break;
-      case 2:
-        color = Colors.orange;
-        break;
-      case 3:
-        color = Colors.yellow;
-        break;
-      case 4:
-        color = Colors.green;
-        break;
-      case 5:
-        color = Colors.teal;
-        break;
-      case 6:
-        color = Colors.lightBlue;
-        break;
-      case 7:
-        color = Colors.purple;
-        break;
-      default:
-    }
+  Widget buildKey({Color color, int keyNumber}) {
     return Expanded(
       child: TextButton(
         onPressed: () {
@@ -57,16 +32,44 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              buildKey(keyNumber: 1),
-              buildKey(keyNumber: 2),
-              buildKey(keyNumber: 3),
-              buildKey(keyNumber: 4),
-              buildKey(keyNumber: 5),
-              buildKey(keyNumber: 6),
-              buildKey(keyNumber: 7),
+              buildKey(color: Colors.red, keyNumber: 1),
+              buildKey(color: Colors.orange, keyNumber: 2),
+              buildKey(color: Colors.yellow, keyNumber: 3),
+              buildKey(color: Colors.green, keyNumber: 4),
+              buildKey(color: Colors.teal, keyNumber: 5),
+              buildKey(color: Colors.lightBlue, keyNumber: 6),
+              buildKey(color: Colors.purple, keyNumber: 7),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SoundKeyWidget extends StatelessWidget {
+  const SoundKeyWidget({Key key, this.soundNumber, this.keyColor})
+      : super(key: key);
+
+  final int soundNumber;
+  final Color keyColor;
+
+  void playSound({int soundNumber}) {
+    final player = AudioCache();
+    player.play('note$soundNumber.wav');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: TextButton(
+        onPressed: () {
+          playSound(soundNumber: soundNumber);
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(keyColor),
+        ),
+        child: Container(),
       ),
     );
   }
